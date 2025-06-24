@@ -1,0 +1,70 @@
+{
+  "name": "rest-to-kafka-produce",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "api",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b97314d9-d559-4eca-974b-be4c7641a22d",
+      "name": "Webhook",
+      "webhookId": "184c50c8-7920-45ff-ab98-1ef6ed8b1a57"
+    },
+    {
+      "parameters": {
+        "topic": "webhook",
+        "sendInputData": false,
+        "message": "={{ $json.body[0].message }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.kafka",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "3d8ec79a-e8a8-4521-9cba-7427804740d4",
+      "name": "Kafka",
+      "alwaysOutputData": true,
+      "credentials": {
+        "kafka": {
+          "id": "LBEnZPITtvkWmh5k",
+          "name": "kafka-local"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Kafka",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "25ff0080-4d81-4c8e-9a34-abe43e8ae57f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "992fb8236ddf3cf7528743a478285cf4272e0be86b8a04dd5eabf439f006ece0"
+  },
+  "id": "VZ4EsUPGDidlKNI2",
+  "tags": []
+}
