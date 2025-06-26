@@ -132,5 +132,3 @@ This README.md includes:
 - Important notes in highlighted boxes
 - License information
 - Considerations for production use
-
-You can copy this directly into your project's README.md file or modify it as needed.
